@@ -20,7 +20,7 @@ on:
         required: true
 
 jobs:
-  deploy:
+  Create-Cluster:
     runs-on: ubuntu-latest
 
     steps:
