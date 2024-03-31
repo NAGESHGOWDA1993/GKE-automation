@@ -51,7 +51,13 @@ jobs:
         working-directory: terraform
         run: terraform apply -auto-approve -var="project=${{ github.event.inputs.project }}" -var="region=${{ github.event.inputs.region }}" -var="cluster_name=${{ github.event.inputs.cluster_name }}" -var="machine_type=${{ github.event.inputs.machine_type }}" -var="node_count=${{ github.event.inputs.node_count }}"
 
-
+      - name: Deploy Application to GKE Cluster and Expose Service
+        run: |
+          kubectl create deployment my-app --image=httpd
+          kubectl get pods
+          kubectl create service nodeport my-app --tcp=8080:80
+          kubectl get svc
+          kubectl get nodes -o wide
 
   Destroy-Cluster:
     runs-on: ubuntu-latest
