@@ -3,6 +3,9 @@ name: GKE-Cluster-Create
 on:
   workflow_dispatch:
     inputs:
+      action:
+        description: 'Action to perform (Create/Destroy)'
+        required: true
       project:
         description: 'Google Cloud project ID'
         required: true
@@ -22,7 +25,7 @@ on:
 jobs:
   Create-Cluster:
     runs-on: ubuntu-latest
-
+    if : ${{ github.event.inputs.action == 'create' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -30,7 +33,7 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
         with:
-          terraform_version: 1.0.0  # Adjust to desired version
+          terraform_version: 1.0.0
 
       - name: Configure Google Cloud credentials
         uses: google-github-actions/setup-gcloud@v1
@@ -50,3 +53,32 @@ jobs:
 
 
 
+  Destroy-Cluster:
+    runs-on: ubuntu-latest
+    if : ${{ github.event.inputs.action == 'destroy' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.0.0
+
+      - name: Configure Google Cloud credentials
+        uses: google-github-actions/setup-gcloud@v1
+
+      - name: Authenticate gcloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+          
+      - name: Initialize Terraform
+        working-directory: terraform
+        run: terraform init
+        
+      - name: Terraform Destroy
+        working-directory: terraform
+        run: terraform destroy -auto-approve -var="project=${{ github.event.inputs.project }}" -var="region=${{ github.event.inputs.region }}" -var="cluster_name=${{ github.event.inputs.cluster_name }}" -var="machine_type=${{ github.event.inputs.machine_type }}" -var="node_count=${{ github.event.inputs.node_count }}"
+
+    
