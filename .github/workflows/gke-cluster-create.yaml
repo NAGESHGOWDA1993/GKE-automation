@@ -6,6 +6,9 @@ on:
       project:
         description: 'Google Cloud project ID'
         required: true
+      cluster_name:
+        description: 'GKE Cluster name'
+        required: true
       region:
         description: 'GCP region'
         required: true
