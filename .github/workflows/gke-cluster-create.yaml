@@ -18,9 +18,6 @@ on:
       node_count:
         description: 'Initial number of nodes in the GKE cluster'
         required: true
-      disk_size_gb:
-        description: 'Disk size in GB for each node in the GKE cluster'
-        required: true
 
 jobs:
   deploy:
