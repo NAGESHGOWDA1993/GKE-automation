@@ -56,6 +56,7 @@ jobs:
 
       - name: Configure Kubectl
         run: |
+          sudo apt-get update -y
           sudo apt-get install google-cloud-sdk-gke-gcloud-auth-plugin -y
           gcloud config set project ${{ github.event.inputs.project }}
           gcloud config set compute/zone ${{ github.event.inputs.region }}
