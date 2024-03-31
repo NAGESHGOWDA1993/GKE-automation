@@ -46,7 +46,7 @@ jobs:
         
       - name: Apply Terraform Changes
         working-directory: terraform
-        run: terraform apply -auto-approve -var="project=${project}" -var="region=${region}" -var="cluster_name=${cluster_name}" -var="machine_type=${machine_type}" -var="node_count=${node_count}"
+        run: terraform apply -auto-approve -var="project=${{ github.event.inputs.project }}" -var="region=${{ github.event.inputs.region }}" -var="cluster_name=${{ github.event.inputs.cluster_name }}" -var="machine_type=${{ github.event.inputs.machine_type }}" -var="node_count=${{ github.event.inputs.node_count }}"
 
 
 
