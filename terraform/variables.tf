@@ -25,8 +25,3 @@ variable "node_count" {
   default     = 3
 }
 
-variable "disk_size_gb" {
-  description = "Disk size in GB for each node in the GKE cluster"
-  type        = number
-  default     = 100
-}
