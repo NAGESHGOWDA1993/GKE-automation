@@ -8,6 +8,11 @@ variable "project" {
   type        = string
 }
 
+variable "cluster_name" {
+  description = "GKE Cluster Name"
+  type        = string
+}
+
 variable "region" {
   description = "GCP region"
   type        = string
