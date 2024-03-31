@@ -1,4 +1,4 @@
-name: Terraform Apply
+name: GKE-Cluster-Create
 
 on:
   workflow_dispatch:
