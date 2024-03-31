@@ -37,10 +37,4 @@ resource "google_container_node_pool" "general" {
     ]
   }
 }
-  master_auth {
-    client_certificate_config {
-      issue_client_certificate = false
-    }
-  }
-}
 
