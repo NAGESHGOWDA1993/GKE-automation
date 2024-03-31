@@ -40,5 +40,8 @@ jobs:
         with:
           credentials_json: ${{ secrets.SERVICE_ACCOUNT_KEY }}
           
+      - name: Initialize Terraform
+        working-directory: terraform
+        run: terraform init
 
 
