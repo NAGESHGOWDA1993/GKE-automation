@@ -21,9 +21,6 @@ on:
       node_count:
         description: 'Initial number of nodes in the GKE cluster'
         required: true
-      zone:
-        description: 'GCP region Zone name'
-        required: true
 
 jobs:
   Create-Cluster:
@@ -60,7 +57,7 @@ jobs:
       - name: Configure Kubectl
         run: |
           gcloud config set project ${{ github.event.inputs.project }}
-          gcloud config set compute/zone ${{ github.event.inputs.zone }}
+          gcloud config set compute/zone ${{ github.event.inputs.region }}
           gcloud container clusters get-credentials ${{ github.event.inputs.cluster_name }}
       
       - name: Deploy Application to GKE Cluster and Expose Service
