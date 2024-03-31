@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       action:
-        description: 'Action to perform (Create/Destroy)'
+        description: 'Action to perform (create/destroy)'
         required: true
       project:
         description: 'Google Cloud project ID'
