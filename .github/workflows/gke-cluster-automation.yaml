@@ -1,4 +1,4 @@
-name: GKE-Cluster-Create
+name: GKE-Cluster-Automation
 
 on:
   workflow_dispatch:
