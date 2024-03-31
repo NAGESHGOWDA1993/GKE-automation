@@ -43,5 +43,10 @@ jobs:
       - name: Initialize Terraform
         working-directory: terraform
         run: terraform init
+        
+      - name: Apply Terraform Changes
+        working-directory: terraform
+        run: terraform apply -auto-approve -var="project=${project}" -var="region=${region}" -var="cluster_name=${cluster_name}" -var="machine_type=${machine_type}" -var="node_count=${node_count}"
+
 
 
