@@ -5,27 +5,42 @@ provider "google" {
 }
 
 resource "google_container_cluster" "my_cluster" {
-  name     = "my-cluster"
+  name     = var.cluster_name
   location = var.region
 
   remove_default_node_pool = true
 
-  initial_node_count = var.node_count
+  initial_node_count  = 1
+  deletion_protection = false
+}
 
-  node_config {
-    machine_type = var.machine_type
-    disk_size_gb = var.disk_size_gb
-    oauth_scopes = [
-      "https://www.googleapis.com/auth/compute",
-      "https://www.googleapis.com/auth/devstorage.read_only",
-      "https://www.googleapis.com/auth/logging.write",
-      "https://www.googleapis.com/auth/monitoring"
-    ]
+resource "google_container_node_pool" "general" {
+  name       = "general"
+  cluster    = google_container_cluster.my_cluster.id
+  node_count = 1
+
+  management {
+    auto_repair  = true
+    auto_upgrade = true
   }
 
+  node_config {
+    preemptible  = false
+    machine_type = "e2-small"
+
+    labels = {
+      role = "general"
+    }
+
+    oauth_scopes = [
+      "https://www.googleapis.com/auth/cloud-platform"
+    ]
+  }
+}
   master_auth {
     client_certificate_config {
       issue_client_certificate = false
     }
   }
 }
+
