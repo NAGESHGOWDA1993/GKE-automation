@@ -45,7 +45,7 @@ jobs:
           
       - name: Initialize Terraform
         working-directory: terraform
-        run: terraform init -backend-config="gke_tf_states" -backend-config="key=terraform/state/${{ github.event.inputs.cluster_name }}/gke"
+        run: terraform init
         
       - name: Apply Terraform Changes
         working-directory: terraform
