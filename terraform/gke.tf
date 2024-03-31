@@ -17,7 +17,7 @@ resource "google_container_cluster" "my_cluster" {
 resource "google_container_node_pool" "general" {
   name       = "general"
   cluster    = google_container_cluster.my_cluster.id
-  node_count = 1
+  node_count = var.node_count
 
   management {
     auto_repair  = true
@@ -26,7 +26,7 @@ resource "google_container_node_pool" "general" {
 
   node_config {
     preemptible  = false
-    machine_type = "e2-small"
+    machine_type = var.machine_type
 
     labels = {
       role = "general"
