@@ -40,7 +40,5 @@ jobs:
         with:
           credentials_json: ${{ secrets.SERVICE_ACCOUNT_KEY }}
           
-      - name: Check Google Cloud SDK authentication
-        run: gcloud auth list
 
 
