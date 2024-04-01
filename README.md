@@ -1,5 +1,10 @@
 # Deploying and Managing an Apache HTTP Server (HTTPD) Application on Google Kubernetes Engine (GKE) using Terraform, GitHub Actions, and Spain Up/Down
 
+
+
+![image](https://github.com/NAGESHGOWDA1993/GKE-automation/assets/109476085/8e781946-23f5-4a99-a1e1-e7564d993a69)
+
+
 # Objective
 
 Automate the creation of a Google Kubernetes Engine (GKE) cluster using Terraform, deploy a single web application powered by Apache HTTP Server (HTTPD), and manage its lifecycle with Spain Up/Down. Ensure that the environment is ephemeral and can be easily recreated.
