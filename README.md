@@ -2,7 +2,8 @@
 
 
 
-![image](https://github.com/NAGESHGOWDA1993/GKE-automation/assets/109476085/8e781946-23f5-4a99-a1e1-e7564d993a69)
+![image](https://github.com/NAGESHGOWDA1993/GKE-automation/assets/109476085/fe14613c-30b8-4bea-b1e5-a7e2171b4939)
+
 
 
 # Objective
