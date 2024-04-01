@@ -63,7 +63,7 @@ jobs:
       
       - name: Deploy Application to GKE Cluster and Expose Service
         run: |
-          kubectl create deployment my-app2 --image=httpd
+          kubectl create deployment my-app2 --image=nageshaks/tm:1.0
           kubectl get pods
           kubectl create service nodeport my-app2 --tcp=8080:80
           sleep 10
