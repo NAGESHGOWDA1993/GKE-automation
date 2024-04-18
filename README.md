@@ -40,3 +40,8 @@ Deploy your NGINX web application (e.g., using kubectl apply).
 # Spin Up/Down Integration:
 Install and configure Spin Up/Down (a tool for managing scheduled startup and shutdown of resources).
 Set up schedules to start and stop your GKE cluster based on usage patterns (e.g., business hours).
+
+  179  docker build -t nageshaks/tm:1.0 .
+  180   /Applications/Docker.app/Contents/Resources/bin/docker build -t nageshaks/tm:2.0
+  181   /Applications/Docker.app/Contents/Resources/bin/docker build -t nageshaks/tm:2.0 .
+  182   /Applications/Docker.app/Contents/Resources/bin/docker push nageshaks/tm:2.0
